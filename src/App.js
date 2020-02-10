@@ -49,20 +49,11 @@ class App extends React.Component {
       todoList: newTodoList
     });
   };
-  // clearPurchased = () => {
-  //   const clearedGroceryList = this.state.groceryList.map(item => {
-  //     // loop through the array
-  //     // find the item we clicked (id, maybe index)
-  //     // toggle that item's purchased property
-  //     if (item.purchase === false) {
-  //       // toggle purchased
-  //       return item;
-  //     }
-  //   });
-  //   this.setState({
-  //     groceryList: clearedGroceryList
-  //   });
-  // };
+  clearCompleted = () => {
+    this.setState({
+      todoList: this.state.todoList.filter(todos => !todos.completed)
+  });
+}
 
   addNewTask = taskText => {
     const newTask = {
@@ -83,7 +74,7 @@ class App extends React.Component {
         <TodoList 
           todoList= {this.state.todoList}
           toggleItem= {this.toggleItem}
-          clearTask = {this.clearTask}/>
+          clearCompleted = {this.clearCompleted}/>
       </div>
     );
   }
